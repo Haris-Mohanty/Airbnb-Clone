@@ -21,11 +21,11 @@ const Header = () => {
           <span className="font-bold text-xl">airbnb</span>
         </a>
         <div className="flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
-          <div>Anywhere</div>
+          <div className="font-medium px-1">Anywhere</div>
           <div className="border-l border-gray-300"></div>
-          <div>Any week</div>
+          <div className="font-medium px-2">Any week</div>
           <div className="border-l border-gray-300"></div>
-          <div>Add guests</div>
+          <div className="font-thin px-1">Add guests</div>
           <button className="bg-primary text-white p-1 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-4 h-3"
+              className="w-4 h-4"
             >
               <path
                 strokeLinecap="round"
