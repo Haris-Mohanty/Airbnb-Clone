@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="text"],input[type="password"]{
+    @apply w-full
+}
