@@ -1,7 +1,13 @@
 const LoginPage = () => {
   return (
     <>
-      <h1>Login</h1>
+      <div className="">
+        <form>
+          <input type="email" placeholder="your@email.com" />
+          <input type="password" placeholder="Password" />
+          <button>Login</button>
+        </form>
+      </div>
     </>
   );
 };
