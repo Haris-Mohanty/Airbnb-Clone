@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Haris-Mohanty/Airbnb-Clone/issues"
   },
-  "homepage": "https://github.com/Haris-Mohanty/Airbnb-Clone#readme"
+  "homepage": "https://github.com/Haris-Mohanty/Airbnb-Clone#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0"
+  }
 }
