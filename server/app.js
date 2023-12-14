@@ -3,9 +3,13 @@ import dotenv from "dotenv";
 import colors from "colors";
 import cors from "cors";
 import morgan from "morgan";
+import connectDB from "./database/db.js";
 
 //********* DOTENV CONFIGURATION *****/
 dotenv.config();
+
+//****** DATABASE CONFIG *****/
+connectDB();
 
 //********* REST OBJECT ********/
 const app = express();
@@ -16,7 +20,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 //********* MIDDLEWARE ROUTES **********/
-
 
 //********* PORTS AND LISTEN **********/
 const port = process.env.PORT || 8080;
