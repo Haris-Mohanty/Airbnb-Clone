@@ -9,8 +9,8 @@ const LoginPage = () => {
             <input type="email" placeholder="your@email.com" />
             <input type="password" placeholder="Password" />
             <button className="primary">Login</button>
-            <div className="flex-center py-2 text-gray-500">
-              Do not have an account yet? <Link className="text-red-500 font-bold" to="/register">Register Now</Link>
+            <div className="text-center py-2 text-gray-500">
+              Do not have an account yet? <Link className="text-red-500 font-bold" to="/register">Register Now!</Link>
             </div>
           </form>
         </div>
