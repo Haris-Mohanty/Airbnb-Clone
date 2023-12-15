@@ -32,6 +32,12 @@ export const registerUser = async (req, res, next) => {
     req.body.password = hashedPassword;
 
     //Create User
+    const user = new userModel(req.body);
+    await user.save();
+    res.status(201).json({
+      message: "User Registered Successfully!",
+      user,
+    });
   } catch (err) {
     return res.status(500).json({
       message: "Error in register user API!",
