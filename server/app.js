@@ -21,6 +21,7 @@ app.use(express.json());
 
 //********* MIDDLEWARE ROUTES **********/
 
+
 //********* PORTS AND LISTEN **********/
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
