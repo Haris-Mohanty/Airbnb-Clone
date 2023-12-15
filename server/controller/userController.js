@@ -1,3 +1,6 @@
+import userModel from "../model/userModel.js";
+import bcrypt from "bcrypt";
+
 //****************** USER REGISTRATION ******************/
 export const registerUser = async (req, res, next) => {
   try {
@@ -15,7 +18,20 @@ export const registerUser = async (req, res, next) => {
       });
     }
 
+    //Check existing user
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        message: "User Already Exists!",
+      });
+    }
 
+    //Hash Password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    req.body.password = hashedPassword;
+
+    //Create User
   } catch (err) {
     return res.status(500).json({
       message: "Error in register user API!",
