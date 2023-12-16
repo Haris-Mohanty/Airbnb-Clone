@@ -15,7 +15,7 @@ export const registerUser = async (name, email, password) => {
       throw new Error("Unexpected Error Occurred!");
     }
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
     throw err;
   }
 };

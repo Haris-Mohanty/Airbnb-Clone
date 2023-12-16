@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../api/api";
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,10 +11,10 @@ function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const user = await registerUser(name, email, password);
-      console.log(user.message);
+      await registerUser(name, email, password);
+      navigate("/login");
     } catch (err) {
-      console.log(err.response.data.message);
+      alert(err.response.data.message);
     }
   };
   return (
