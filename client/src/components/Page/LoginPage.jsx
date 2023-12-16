@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <>
       <div className="mt-4 grow flex items-center justify-around">
@@ -10,7 +13,10 @@ const LoginPage = () => {
             <input type="password" placeholder="Password" />
             <button className="primary">Login</button>
             <div className="text-center py-2 text-gray-500">
-              Do not have an account yet? <Link className="text-red-500 font-bold" to="/register">Register Now!</Link>
+              Do not have an account yet?{" "}
+              <Link className="text-red-500 font-bold" to="/register">
+                Register Now!
+              </Link>
             </div>
           </form>
         </div>
