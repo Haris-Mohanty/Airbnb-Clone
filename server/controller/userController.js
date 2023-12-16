@@ -45,3 +45,12 @@ export const registerUser = async (req, res, next) => {
     });
   }
 };
+
+//****************** USER LOGIN ******************/
+export const loginUser = async (req, res, next) => {
+  try{
+
+  }catch(err){
+  
+  }
+};
