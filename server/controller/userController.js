@@ -48,9 +48,49 @@ export const registerUser = async (req, res, next) => {
 
 //****************** USER LOGIN ******************/
 export const loginUser = async (req, res, next) => {
-  try{
+  try {
+    const { email, password } = req.body;
 
-  }catch(err){
-  
+    //Validation
+    if (!email || !password) {
+      return res.status(422).json({
+        message: "Please provide all fields!",
+      });
+    }
+    if (password.length < 6) {
+      return res.status(422).json({
+        message: "Password length should be greater than 6 character",
+      });
+    }
+
+    //Check Registered user
+    const registeredUser = await userModel.findOne({ email });
+    if (!registeredUser) {
+      return res.status(404).json({
+        message: "Invalid Credentials!",
+      });
+    }
+
+    //Compare Password
+    const comparePassword = await bcrypt.compare(
+      password,
+      registeredUser.password
+    );
+    if (!comparePassword) {
+      return res.status(400).json({
+        message: "Incorrect Password, Please check again!",
+      });
+    }
+
+    //Login Success
+    return res.status(200).json({
+      message: "Login Success!",
+      registeredUser,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Error in Login user API!",
+      error: err.message,
+    });
   }
 };
