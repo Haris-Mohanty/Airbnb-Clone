@@ -7,9 +7,15 @@ export const registerUser = async (name, email, password) => {
       email,
       password,
     });
-    console.log(response);
+    if (response.status === 200 || response.status === 201) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      // If the response status is not success (200 or 201), throw an error
+      throw new Error("Unexpected Error Occurred!");
+    }
   } catch (err) {
-    console.log("Registration failed:", err.message);
+    console.log(err);
     throw err;
   }
 };

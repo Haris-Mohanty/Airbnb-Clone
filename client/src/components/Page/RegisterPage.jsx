@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { registerUser } from "../../api/api";
 
 function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    
+    try {
+      const user = await registerUser(name, email, password);
+      console.log(user.message);
+    } catch (err) {
+      console.log(err.response.data.message);
+    }
   };
   return (
     <>
