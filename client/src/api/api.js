@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//***************** REGISTER USER *************/
 export const registerUser = async (name, email, password) => {
   try {
     const response = await axios.post("/user/register", {
@@ -14,6 +15,15 @@ export const registerUser = async (name, email, password) => {
       // If the response status is not success (200 or 201), throw an error
       throw new Error("Unexpected Error Occurred!");
     }
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+//***************** LOGIN USER *************/
+export const loginUser = async () => {
+  try {
   } catch (err) {
     console.log(err.message);
     throw err;
