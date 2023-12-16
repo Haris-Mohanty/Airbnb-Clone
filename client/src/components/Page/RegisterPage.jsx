@@ -8,6 +8,7 @@ function RegisterPage() {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    
   };
   return (
     <>
