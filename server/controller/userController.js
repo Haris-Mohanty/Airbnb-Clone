@@ -90,6 +90,9 @@ export const loginUser = async (req, res, next) => {
       { expiresIn: "1d" }
     );
 
+    //Set cookie
+    res.cookie("token", token);
+
     //Login Success
     return res.status(200).json({
       message: "Login Success!",
