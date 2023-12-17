@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/api";
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,6 +11,7 @@ const LoginPage = () => {
     try {
       await loginUser(email, password);
       alert("Login Success!");
+      navigate("/");
     } catch (err) {
       alert(err.response.data.message);
     }
