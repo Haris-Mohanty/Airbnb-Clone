@@ -1,6 +1,6 @@
 import userModel from "../model/userModel.js";
 import bcrypt from "bcrypt";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 
 //****************** USER REGISTRATION ******************/
 export const registerUser = async (req, res, next) => {
@@ -84,12 +84,17 @@ export const loginUser = async (req, res, next) => {
     }
 
     //Create json web token
-
+    const token = jwt.sign(
+      { email: registeredUser.email, userId: registeredUser._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
 
     //Login Success
     return res.status(200).json({
       message: "Login Success!",
       registeredUser,
+      token,
     });
   } catch (err) {
     return res.status(500).json({
