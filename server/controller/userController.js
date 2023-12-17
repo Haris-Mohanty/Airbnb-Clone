@@ -1,5 +1,6 @@
 import userModel from "../model/userModel.js";
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken'
 
 //****************** USER REGISTRATION ******************/
 export const registerUser = async (req, res, next) => {
@@ -81,6 +82,9 @@ export const loginUser = async (req, res, next) => {
         message: "Incorrect Password, Please check again!",
       });
     }
+
+    //Create json web token
+
 
     //Login Success
     return res.status(200).json({
