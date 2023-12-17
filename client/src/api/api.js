@@ -24,7 +24,11 @@ export const registerUser = async (name, email, password) => {
 //***************** LOGIN USER *************/
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post("/user/login", { email, password });
+    const response = await axios.post(
+      "/user/login",
+      { email, password },
+      { withCredentials: true }
+    );
 
     if (response.status === 200) {
       const resData = await response.data;
