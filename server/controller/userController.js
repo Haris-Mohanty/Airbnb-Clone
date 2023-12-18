@@ -106,3 +106,6 @@ export const loginUser = async (req, res, next) => {
     });
   }
 };
+
+//****************** GET ALL USER ******************/
+export const getUser = async () => {};
