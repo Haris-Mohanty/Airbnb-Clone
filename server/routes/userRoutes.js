@@ -16,7 +16,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 //Get user
-router.post("/getUser", getUser);
+router.get("/getUser", getUser);
 
 //Export
 export default router;

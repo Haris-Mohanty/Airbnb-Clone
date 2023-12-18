@@ -108,4 +108,22 @@ export const loginUser = async (req, res, next) => {
 };
 
 //****************** GET ALL USER ******************/
-export const getUser = async () => {};
+export const getUser = async (req, res, next) => {
+  try {
+    const allUser = await userModel.find();
+    if (!allUser) {
+      return res.status(500).json({
+        message: "Unexpected Error Occured!",
+      });
+    }
+
+    return res.status(200).json({
+      allUser,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Error in Login user API!",
+      error: err.message,
+    });
+  }
+};
