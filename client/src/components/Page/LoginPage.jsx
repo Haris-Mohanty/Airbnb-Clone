@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/api";
+import { UserContext } from "../UserContext";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { setUser } = useContext(UserContext);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(email, password);
+      const data = await loginUser(email, password);
+      setUser(data.registeredUser);
       alert("Login Success!");
       navigate("/");
     } catch (err) {
