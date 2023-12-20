@@ -3,6 +3,7 @@ import {
   registerUser,
   loginUser,
   getUser,
+  loginUserProfile,
 } from "../controller/userController.js";
 
 //Router Obj
@@ -19,7 +20,7 @@ router.post("/login", loginUser);
 router.get("/getUser", getUser);
 
 //Get Login user profile
-router.get("/profile")
+router.get("/profile", loginUserProfile);
 
 //Export
 export default router;
