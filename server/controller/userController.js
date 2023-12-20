@@ -132,16 +132,24 @@ export const getUser = async (req, res, next) => {
 //************ GET LOGIN USER PROFILE DETAILS **************/
 export const loginUserProfile = async (req, res, next) => {
   try {
-    // const { token } = req.cookies;
+    const { token } = req.cookies;
 
-    // if (token) {
-    //   jwt.verify(token, process.env.JWT_SECRET, {}, (err, res) => {
-    //     if (err) throw err;
-    //     res.json(res)
-    //   });
-    // }
+    //Validation
+    if (!token) {
+      return res.status(401).json({
+        message: "Unauthorized. Token not found in cookies.",
+      });
+    }
 
-    console.log("Cookies:", req.cookies);
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
+        if (err) throw err;
+
+        //Get user data
+        const userDoc = await userModel.findById(userData.userId);
+        res.json(userDoc);
+      });
+    }
   } catch (err) {
     return res.status(500).json({
       message: "Internal Server Error!",
