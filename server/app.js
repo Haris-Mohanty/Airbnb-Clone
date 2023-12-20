@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import colors from "colors";
 import cors from "cors";
 import morgan from "morgan";
+import cookieParser from 'cookie-parser';
 import connectDB from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
 
@@ -20,9 +21,9 @@ app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true,
 }));
-
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cookieParser());
 
 //********* MIDDLEWARE ROUTES **********/
 app.use("/api/v1/user", userRoutes);
