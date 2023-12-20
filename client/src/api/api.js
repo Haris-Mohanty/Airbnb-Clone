@@ -21,7 +21,7 @@ export const registerUser = async (name, email, password) => {
   }
 };
 
-//***************** LOGIN USER *************/
+//***************** LOGIN USER *******************/
 export const loginUser = async (email, password) => {
   try {
     const response = await axios.post(
@@ -36,6 +36,15 @@ export const loginUser = async (email, password) => {
     } else {
       throw new Error("Unexpected Error Occurred!");
     }
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+//***************** GET LOGIN USER DETAILS *************/
+export const getLoginUserDetails = async () => {
+  try {
   } catch (err) {
     console.log(err.message);
     throw err;
