@@ -45,7 +45,7 @@ export const loginUser = async (email, password) => {
 //***************** GET LOGIN USER DETAILS *************/
 export const getLoginUserDetails = async () => {
   try {
-    const response = await axios.get("/user.profile");
+    const response = await axios.get("/user/profile");
 
     const resData = await response.data;
     return resData;
