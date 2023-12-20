@@ -15,8 +15,11 @@ router.post("/register", registerUser);
 //Login
 router.post("/login", loginUser);
 
-//Get user
+//Get all user
 router.get("/getUser", getUser);
+
+//Get Login user profile
+router.get("/profile")
 
 //Export
 export default router;
