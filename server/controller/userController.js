@@ -134,13 +134,6 @@ export const loginUserProfile = async (req, res, next) => {
   try {
     const { token } = req.cookies;
 
-    //Validation
-    if (!token) {
-      return res.status(401).json({
-        message: "Unauthorized. Token not found in cookies.",
-      });
-    }
-
     if (token) {
       jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
         if (err) throw err;
