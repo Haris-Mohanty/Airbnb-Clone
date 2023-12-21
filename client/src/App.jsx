@@ -17,7 +17,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/account/:subpage?" element={<Account />} />
           </Route>
 
           <Route path="*" element={<PageNotFound />} />
