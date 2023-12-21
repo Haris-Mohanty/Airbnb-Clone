@@ -1,20 +1,26 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "../UserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Account = () => {
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { ready, user } = useContext(UserContext);
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
+  if (!ready) {
+    return "Loading....";
+  }
+
+  if (ready && !user) {
+    return <Navigate to={"/login"} />;
+  }
 
   return (
     <>
-      <div>{user && user.name}</div>
+      <div>
+        <nav>
+          <Link to={"/account/bookings"}>My Bookings</Link>
+          <Link to={"/account/places"}>My accommodations</Link>
+        </nav>
+      </div>
     </>
   );
 };

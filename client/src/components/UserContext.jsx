@@ -6,16 +6,20 @@ export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!user) {
       getLoginUserDetails()
-        .then((data) => setUser(data))
+        .then((data) => {
+          setUser(data);
+          setReady(true);
+        })
         .catch((err) => console.log(err));
     }
   }, [user]);
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, ready }}>
       {children}
     </UserContext.Provider>
   );
