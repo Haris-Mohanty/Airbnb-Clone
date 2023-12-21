@@ -4,7 +4,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Account = () => {
-  const { redirect, setRedirect } = useState(null);
+  const [redirect, setRedirect] = useState(null);
   const { ready, user } = useContext(UserContext);
   let { subpage } = useParams();
   if (subpage === undefined) {
@@ -33,7 +33,10 @@ const Account = () => {
     return classes;
   }
 
-  
+  //Redirect to homepage after logout
+  if (redirect) {
+    return <Navigate to={redirect} />;
+  }
 
   return (
     <>
