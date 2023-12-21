@@ -42,7 +42,7 @@ const Account = () => {
       {subpage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
           Logged in as {user.name} ({user.email}) <br />
-          <button className="primary">Logout</button>
+          <button className="primary max-w-sm mt-2">Logout</button>
         </div>
       )}
     </>

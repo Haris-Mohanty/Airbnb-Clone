@@ -22,5 +22,8 @@ router.get("/getUser", getUser);
 //Get Login user profile
 router.get("/profile", loginUserProfile);
 
+//Logout
+router.post("/logout")
+
 //Export
 export default router;
