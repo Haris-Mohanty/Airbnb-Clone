@@ -4,6 +4,7 @@ import {
   loginUser,
   getUser,
   loginUserProfile,
+  logoutUser,
 } from "../controller/userController.js";
 
 //Router Obj
@@ -23,7 +24,7 @@ router.get("/getUser", getUser);
 router.get("/profile", loginUserProfile);
 
 //Logout
-router.post("/logout")
+router.post("/logout", logoutUser);
 
 //Export
 export default router;
