@@ -6,6 +6,7 @@ import LoginPage from "./components/Page/LoginPage";
 import Layout from "./components/Layout";
 import RegisterPage from "./components/Page/RegisterPage";
 import { UserContextProvider } from "./components/UserContext";
+import Account from "./components/Page/Account";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/account" element={<Account />} />
           </Route>
 
           <Route path="*" element={<PageNotFound />} />
