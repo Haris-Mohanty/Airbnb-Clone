@@ -150,3 +150,15 @@ export const loginUserProfile = async (req, res, next) => {
     });
   }
 };
+
+//************ GET LOGIN USER PROFILE DETAILS **************/
+export const logoutUser = async (req, res, next) => {
+  try {
+    
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error!",
+      error: err.message,
+    });
+  }
+};
