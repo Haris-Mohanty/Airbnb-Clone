@@ -151,7 +151,7 @@ export const loginUserProfile = async (req, res, next) => {
   }
 };
 
-//************ GET LOGIN USER PROFILE DETAILS **************/
+//************ LOGOUT USER **************/
 export const logoutUser = async (req, res, next) => {
   try {
     res.cookie("token", "").json(true);
