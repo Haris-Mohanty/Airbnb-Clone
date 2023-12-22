@@ -4,6 +4,7 @@ const Places = () => {
   const { action } = useParams();
   return (
     <>
+      {/**** WHEN CLICK ON ADD NEW PLACE BUTTON, THE BUTTON IS HIDE ****/}
       {action !== "new" && (
         <div className="text-center">
           <Link
@@ -26,6 +27,15 @@ const Places = () => {
             </svg>
             Add new Place
           </Link>
+        </div>
+      )}
+
+      {/********** FORM TO ADD NEW PLACE AND DETAILS *********/}
+      {action === "new" && (
+        <div>
+          <form>
+            <input type="text" placeholder="Title" />
+          </form>
         </div>
       )}
     </>
