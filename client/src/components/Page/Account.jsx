@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Account = () => {
   const [redirect, setRedirect] = useState(null);
-  const { ready, user } = useContext(UserContext);
+  const { ready, user, setUser } = useContext(UserContext);
   let { subpage } = useParams();
   if (subpage === undefined) {
     subpage = "profile";
@@ -15,13 +15,14 @@ const Account = () => {
   const logout = async () => {
     await axios.post("/user/logout");
     setRedirect("/");
+    setUser(null);
   };
 
   if (!ready) {
     return "Loading....";
   }
 
-  if (ready && !user) {
+  if (ready && !user && !redirect) {
     return <Navigate to={"/login"} />;
   }
 
