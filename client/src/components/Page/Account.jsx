@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import { Link, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Places from "./Places";
 
 const Account = () => {
   const [redirect, setRedirect] = useState(null);
@@ -53,12 +54,20 @@ const Account = () => {
         </Link>
       </nav>
 
+      {/************ SHOW PROFILE DETAILS **********/}
       {subpage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
           Logged in as {user.name} ({user.email}) <br />
           <button onClick={logout} className="primary max-w-sm mt-2">
             Logout
           </button>
+        </div>
+      )}
+
+      {/************** SHOW PLACES DETAILS ************/}
+      {subpage === "places" && (
+        <div>
+          <Places />
         </div>
       )}
     </>
