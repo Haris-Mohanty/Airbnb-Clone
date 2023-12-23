@@ -6,8 +6,30 @@ const Places = () => {
 
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
-  const [addedPhotos, setAddedPhotos] = useState([])
-  const [photoLink, setPhotLink] = useState('')
+  const [addedPhotos, setAddedPhotos] = useState([]);
+  const [photoLink, setPhotLink] = useState("");
+  const [description, setDescription] = useState("");
+  const [perks, setPerks] = useState([]);
+  const [extraInfo, setExtraInfo] = useState("");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [maxGuests, setMaxGuests] = useState(1);
+
+  const inputHeader = (text) => {
+    return <h2 className="text-2xl font-medium mt-4">{text}</h2>;
+  };
+  const inputDesc = (desc) => {
+    return <p className="text-gray-500 text-sm">{desc}</p>;
+  };
+  const preInput = (header, desc) => {
+    return (
+      <>
+        {inputHeader(header)}
+        {inputDesc(desc)}
+      </>
+    );
+  };
+
   return (
     <>
       {/**** WHEN CLICK ON ADD NEW PLACE BUTTON, THE BUTTON IS HIDE ****/}
@@ -40,11 +62,10 @@ const Places = () => {
       {action === "new" && (
         <div className="p-8">
           <form>
-            <h2 className="text-2xl font-medium mt-4">Title</h2>
-            <p className="text-gray-500 text-sm">
-              Title for your place, should be short and catchy as in
-              advertisement
-            </p>
+            {preInput(
+              "Title",
+              "Title for your place, should be short and catchy as in advertisement"
+            )}
             <input type="text" placeholder="Title, for ex: My Lovely apt" />
 
             <h2 className="text-2xl font-medium mt-4">Address</h2>
