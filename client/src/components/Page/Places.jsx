@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const Places = () => {
   const { action } = useParams();
+
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [addedPhotos, setAddedPhotos] = useState([])
+  const [photoLink, setPhotLink] = useState('')
   return (
     <>
       {/**** WHEN CLICK ON ADD NEW PLACE BUTTON, THE BUTTON IS HIDE ****/}
@@ -214,15 +220,15 @@ const Places = () => {
             <div className="grid gap-2 sm:grid-cols-3">
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Check In time </h3>
-                <input type="text" placeholder="14:00" />
+                <input type="text" placeholder="ex 14:00" />
               </div>
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Check Out time </h3>
-                <input type="text" />
+                <input type="text" placeholder="ex 14:00" />
               </div>
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Max number of guests</h3>
-                <input type="text" />
+                <input type="text" placeholder="ex 2 or 3..." />
               </div>
             </div>
 
