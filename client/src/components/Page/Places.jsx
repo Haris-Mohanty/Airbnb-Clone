@@ -17,6 +17,12 @@ const Places = () => {
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
 
+
+  //ADD PHOTO BY LINK
+  const addPhotoByLink=()=>{
+    
+  }
+
   //MAKE FORM SORT
   const inputHeader = (text) => {
     return <h2 className="text-2xl font-medium mt-4">{text}</h2>;
