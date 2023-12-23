@@ -5,6 +5,7 @@ import Perks from "../Perks";
 const Places = () => {
   const { action } = useParams();
 
+  //STATE ADD
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -16,6 +17,7 @@ const Places = () => {
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
 
+  //MAKE FORM SORT
   const inputHeader = (text) => {
     return <h2 className="text-2xl font-medium mt-4">{text}</h2>;
   };
@@ -67,16 +69,28 @@ const Places = () => {
               "Title",
               "Title for your place, should be short and catchy as in advertisement"
             )}
-            <input type="text" placeholder="Title, for ex: My Lovely apt" />
+            <input
+              type="text"
+              placeholder="Title, for ex: My Lovely apt"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
 
             {preInput("Address", "Address to this place")}
-            <input type="text" placeholder="Address" />
+            <input
+              type="text"
+              placeholder="Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
 
             {preInput("Photos", "more = better")}
             <div className="flex gap-2">
               <input
                 type="text"
                 placeholder="Add photos using a link ....jpg"
+                value={photoLink}
+                onChange={(e) => setPhotLink(e.target.value)}
               />
               <button className="bg-gray-200 grow px-4 rounded-2xl">
                 Add&nbsp;Photo
@@ -103,15 +117,21 @@ const Places = () => {
             </div>
 
             {preInput("Description", "Description of the place")}
-            <textarea />
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
 
             {preInput("Perks", "Select all the perks of your place")}
             <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-              <Perks />
+              <Perks selected={perks} onChange={setPerks} />
             </div>
 
             {preInput("Extra Info", "House rules, etc...")}
-            <textarea />
+            <textarea
+              value={extraInfo}
+              onChange={(e) => setExtraInfo(e.target.value)}
+            />
 
             {preInput(
               "Check in&out times",
@@ -120,15 +140,30 @@ const Places = () => {
             <div className="grid gap-2 sm:grid-cols-3">
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Check In time </h3>
-                <input type="text" placeholder="ex 14:00" />
+                <input
+                  type="text"
+                  placeholder="ex 14:00"
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                />
               </div>
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Check Out time </h3>
-                <input type="text" placeholder="ex 14:00" />
+                <input
+                  type="text"
+                  placeholder="ex 11:00"
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                />
               </div>
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Max number of guests</h3>
-                <input type="text" placeholder="ex 2 or 3..." />
+                <input
+                  type="number"
+                  placeholder="ex 2 or 3..."
+                  value={maxGuests}
+                  onChange={(e) => setMaxGuests(e.target.value)}
+                />
               </div>
             </div>
 
