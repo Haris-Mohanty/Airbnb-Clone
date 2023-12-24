@@ -17,11 +17,11 @@ const Places = () => {
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
 
-
   //ADD PHOTO BY LINK
-  const addPhotoByLink=()=>{
-    
-  }
+  const addPhotoByLink = () => {};
+
+  // FORM SUBMIT || ADD PLACE
+  const handleSubmit = () => {};
 
   //MAKE FORM SORT
   const inputHeader = (text) => {
@@ -70,7 +70,7 @@ const Places = () => {
       {/********** FORM TO ADD NEW PLACE AND DETAILS *********/}
       {action === "new" && (
         <div className="p-8">
-          <form>
+          <form onSubmit={handleSubmit}>
             {preInput(
               "Title",
               "Title for your place, should be short and catchy as in advertisement"
