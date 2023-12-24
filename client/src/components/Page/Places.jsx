@@ -21,7 +21,9 @@ const Places = () => {
   const addPhotoByLink = () => {};
 
   // FORM SUBMIT || ADD PLACE
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   //MAKE FORM SORT
   const inputHeader = (text) => {
