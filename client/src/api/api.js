@@ -54,3 +54,6 @@ export const getLoginUserDetails = async () => {
     throw err;
   }
 };
+
+//***************** IMAGE UPLOAD *************/
+export const imageUpload = async (link) => {};
