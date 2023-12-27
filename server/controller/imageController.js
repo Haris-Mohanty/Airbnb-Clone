@@ -5,6 +5,7 @@ import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url); //Found url
 const __dirname = dirname(__filename); //Directory name find
 
+//***************** PHOTO UPLOAD BY LINK **************/
 export const imageUploadByLink = async (req, res, next) => {
   try {
     const { link } = req.body;
@@ -25,6 +26,17 @@ export const imageUploadByLink = async (req, res, next) => {
       message: "Image uploaded successfully",
       newName,
     });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error!",
+      error: err.message,
+    });
+  }
+};
+
+//***************** PHOTO UPLOAD FROM DEVICE **************/
+export const uploadPhotoFromDevice = async (req, res, next) => {
+  try {
   } catch (err) {
     return res.status(500).json({
       message: "Internal Server Error!",
