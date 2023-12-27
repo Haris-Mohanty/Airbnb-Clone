@@ -1,5 +1,8 @@
 import express from "express";
-import { imageUploadByLink } from "../controller/imageController.js";
+import {
+  imageUploadByLink,
+  uploadPhotoFromDevice,
+} from "../controller/imageController.js";
 
 //Rest Obj
 const router = express.Router();
@@ -8,7 +11,7 @@ const router = express.Router();
 router.post("/upload-by-link", imageUploadByLink);
 
 //Upload photo from device
-router.post("/upload", )
+router.post("/upload", uploadPhotoFromDevice);
 
 //Export
 export default router;
