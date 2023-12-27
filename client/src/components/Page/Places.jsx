@@ -32,6 +32,12 @@ const Places = () => {
     }
   };
 
+  //UPLOAD PHOTO FROM DEVICE
+  const uploadPhoto = (e) => {
+    const files = e.target.files;
+    console.log(files);
+  };
+
   // FORM SUBMIT || ADD PLACE
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -132,7 +138,7 @@ const Places = () => {
                   </div>
                 ))}
               <label className="flex items-center justify-center gap-2 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
-                <input type="file" className="hidden" />
+                <input type="file" className="hidden" onChange={uploadPhoto} />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
