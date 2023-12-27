@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Perks from "../Perks";
+import { imageUpload } from "../../api/api";
 
 const Places = () => {
   const { action } = useParams();
@@ -18,7 +19,15 @@ const Places = () => {
   const [maxGuests, setMaxGuests] = useState(1);
 
   //ADD PHOTO BY LINK
-  const addPhotoByLink = () => {};
+  const addPhotoByLink = async (e) => {
+    e.preventDefault();
+    try {
+      await imageUpload(photoLink);
+      alert("Image Uploaded Successfully!");
+    } catch (err) {
+      alert(err.response.data.message);
+    }
+  };
 
   // FORM SUBMIT || ADD PLACE
   const handleSubmit = (e) => {
@@ -100,7 +109,10 @@ const Places = () => {
                 value={photoLink}
                 onChange={(e) => setPhotLink(e.target.value)}
               />
-              <button className="bg-gray-200 grow px-4 rounded-2xl">
+              <button
+                onClick={addPhotoByLink}
+                className="bg-gray-200 grow px-4 rounded-2xl"
+              >
                 Add&nbsp;Photo
               </button>
             </div>
