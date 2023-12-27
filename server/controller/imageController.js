@@ -8,7 +8,7 @@ const __dirname = dirname(__filename); //Directory name find
 export const imageUploadByLink = async (req, res, next) => {
   try {
     const { link } = req.body;
-    const newName = Date.now() + ".jpg";
+    const newName = "photo" + Date.now() + ".jpg";
     const destinationPath = join(__dirname, "..", "uploads", newName);
 
     const options = {
@@ -23,7 +23,7 @@ export const imageUploadByLink = async (req, res, next) => {
 
     return res.status(200).json({
       message: "Image uploaded successfully",
-      fileName: fileName,
+      newName,
     });
   } catch (err) {
     return res.status(500).json({

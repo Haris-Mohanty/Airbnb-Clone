@@ -22,8 +22,12 @@ const Places = () => {
   const addPhotoByLink = async (e) => {
     e.preventDefault();
     try {
-      await imageUpload(photoLink);
+      const data = await imageUpload(photoLink);
       alert("Image Uploaded Successfully!");
+      const fileName = data.newName;
+      setAddedPhotos((prev) => {
+        return [...prev, fileName];
+      });
     } catch (err) {
       alert(err.response.data.message);
     }
@@ -117,6 +121,12 @@ const Places = () => {
               </button>
             </div>
             <div className="mt-3 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {addedPhotos.length > 0 &&
+                addedPhotos.map((link, index) => (
+                  <div key={index}>
+                    <img src={"http://localhost:8080/uploads/" + link} alt="" />
+                  </div>
+                ))}
               <button className="flex justify-center gap-2 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
