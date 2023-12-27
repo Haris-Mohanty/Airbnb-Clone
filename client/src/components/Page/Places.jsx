@@ -23,7 +23,6 @@ const Places = () => {
     e.preventDefault();
     try {
       const data = await imageUpload(photoLink);
-      alert("Image Uploaded Successfully!");
       const fileName = data.newName;
       setAddedPhotos((prev) => {
         return [...prev, fileName];
@@ -120,14 +119,20 @@ const Places = () => {
                 Add&nbsp;Photo
               </button>
             </div>
-            <div className="mt-3 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+
+            <div className="mt-3 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {addedPhotos.length > 0 &&
                 addedPhotos.map((link, index) => (
                   <div key={index}>
-                    <img src={"http://localhost:8080/uploads/" + link} alt="" />
+                    <img
+                      className="rounded-2xl "
+                      src={"http://localhost:8080/uploads/" + link}
+                      alt={link}
+                    />
                   </div>
                 ))}
-              <button className="flex justify-center gap-2 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+              <label className="flex items-center justify-center gap-2 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
+                <input type="file" className="hidden" />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -143,7 +148,7 @@ const Places = () => {
                   />
                 </svg>
                 Upload
-              </button>
+              </label>
             </div>
 
             {preInput("Description", "Description of the place")}
