@@ -73,11 +73,20 @@ export const imageUpload = async (link) => {
 };
 
 //***************** IMAGE UPLOAD FROM DEVICE *************/
-export const imageUploadFromDevice = async () => {
+export const imageUploadFromDevice = async (formData) => {
   try {
-    const response = await axios.post("/image/upload", {});
+    const response = await axios.post("/image/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
-    
+    if (response.status === 200) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
   } catch (err) {
     console.log(err.message);
     throw err;
