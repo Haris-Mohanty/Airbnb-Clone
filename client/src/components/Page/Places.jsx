@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Perks from "../Perks";
-import { imageUpload } from "../../api/api";
+import { imageUpload, imageUploadFromDevice } from "../../api/api";
 
 const Places = () => {
   const { action } = useParams();
@@ -33,9 +33,19 @@ const Places = () => {
   };
 
   //UPLOAD PHOTO FROM DEVICE
-  const uploadPhoto = (e) => {
-    const files = e.target.files;
-    console.log(files);
+  const uploadPhoto = async (e) => {
+    try {
+      const files = e.target.files;
+
+      const formData = new FormData();
+      for (const file of files) {
+        formData.append("photos", file);
+      }
+      await imageUploadFromDevice(formData);
+      alert("Image Uploaded Successfully! You can add more!");
+    } catch (err) {
+      alert(err.response.data.error);
+    }
   };
 
   // FORM SUBMIT || ADD PLACE
@@ -138,7 +148,12 @@ const Places = () => {
                   </div>
                 ))}
               <label className="flex items-center justify-center gap-2 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
-                <input type="file" className="hidden" onChange={uploadPhoto} />
+                <input
+                  type="file"
+                  multiple
+                  className="hidden"
+                  onChange={uploadPhoto}
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
