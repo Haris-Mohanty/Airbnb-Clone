@@ -8,12 +8,6 @@ import connectDB from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import imageRoutes from "./routes/imageRoutes.js";
 
-//********** UPLOAD IMAGE (FIND DIRECTORY) *******/
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 //********* DOTENV CONFIGURATION *****/
 dotenv.config();
 
@@ -30,7 +24,7 @@ app.use(
     credentials: true,
   })
 );
-app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use("/uploads", express.static("uploads"));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
