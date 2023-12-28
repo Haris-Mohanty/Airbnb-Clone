@@ -4,7 +4,6 @@ import {
   handleUploadedFiles,
   uploadPhotoFromDevice,
 } from "../controller/imageController.js";
-import { upload } from "../middleware/imageMiddleware.js";
 
 //Rest Obj
 const router = express.Router();

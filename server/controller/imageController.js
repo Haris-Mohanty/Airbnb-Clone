@@ -35,19 +35,6 @@ export const imageUploadByLink = async (req, res, next) => {
 };
 
 //***************** PHOTO UPLOAD FROM DEVICE **************/
-//DiskStorage setup
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "uploads/"); //file destination
-//   },
-//   filename: function (req, file, cb) {
-//     const uniqueSuffix = uuidv4();
-//     cb(null, file.fieldname + "-" + uniqueSuffix + ".jpg"); //file name
-//   },
-// });
-// const upload = multer({ storage: storage });
-
-// //Middleware
 export const uploadPhotoFromDevice = upload.array("photos", 100);
 
 //Upload function
@@ -58,7 +45,6 @@ export const handleUploadedFiles = (req, res) => {
         message: "No files were uploaded.",
       });
     }
-
     const uploadedFiles = req.files.map((file) => file.filename);
 
     return res.status(200).json({
