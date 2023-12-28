@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import imageRoutes from "./routes/imageRoutes.js";
+import multer from "multer";
 
 //********* DOTENV CONFIGURATION *****/
 dotenv.config();
@@ -32,6 +33,25 @@ app.use(cookieParser());
 //********* MIDDLEWARE ROUTES **********/
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/image", imageRoutes);
+
+//****** CUSTOM MIDDLEWARE ERROR HANDLE ******/
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    // Multer errors (e.g., file size exceeded)
+    res.status(400).json({
+      message: "Multer error",
+      error: err.message,
+    });
+  } else if (err) {
+    // Other unexpected errors
+    res.status(500).json({
+      message: "Internal Server Error!",
+      error: err.message,
+    });
+  } else {
+    next(); // If no error, proceed to the next middleware or route handler
+  }
+});
 
 //********* PORTS AND LISTEN **********/
 const port = process.env.PORT || 8080;

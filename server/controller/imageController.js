@@ -1,14 +1,12 @@
-import multer from "multer";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import download from "image-downloader";
-import { v4 as uuidv4 } from "uuid";
 import { upload } from "../middleware/imageMiddleware.js";
 
 const __filename = fileURLToPath(import.meta.url); //Found url
 const __dirname = dirname(__filename); //Directory name find
 
-//***************** PHOTO UPLOAD BY LINK **************/
+//********************* PHOTO UPLOAD BY LINK ******************/
 export const imageUploadByLink = async (req, res, next) => {
   try {
     const { link } = req.body;
@@ -34,7 +32,7 @@ export const imageUploadByLink = async (req, res, next) => {
   }
 };
 
-//***************** PHOTO UPLOAD FROM DEVICE **************/
+//******************* PHOTO UPLOAD FROM DEVICE *****************/
 export const uploadPhotoFromDevice = upload.array("photos", 100);
 
 //Upload function
