@@ -55,7 +55,7 @@ export const getLoginUserDetails = async () => {
   }
 };
 
-//***************** IMAGE UPLOAD *************/
+//***************** IMAGE UPLOAD BY LINK *************/
 export const imageUpload = async (link) => {
   try {
     const response = await axios.post("/image/upload-by-link", { link });
@@ -66,6 +66,18 @@ export const imageUpload = async (link) => {
     } else {
       throw new Error("Unexpected Error Occurred!");
     }
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+//***************** IMAGE UPLOAD FROM DEVICE *************/
+export const imageUploadFromDevice = async () => {
+  try {
+    const response = await axios.post("/image/upload", {});
+
+    
   } catch (err) {
     console.log(err.message);
     throw err;

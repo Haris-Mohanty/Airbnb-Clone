@@ -23,7 +23,7 @@ const fileFilter = function (req, file, cb) {
 
 //Set Limits
 const limits = {
-  fileSize: 1024 * 1024 * 2, // 3 MB limit
+  fileSize: 1024 * 1024 * 3, // 3 MB limit
 };
 
 //Export

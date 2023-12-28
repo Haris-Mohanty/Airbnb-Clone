@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/image", imageRoutes);
 
-//****** CUSTOM MIDDLEWARE ERROR HANDLE ******/
+//****** CUSTOM MIDDLEWARE ERROR HANDLE(Image Error Handle) ******/
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     // Multer errors (e.g., file size exceeded)
