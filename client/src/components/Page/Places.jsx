@@ -53,8 +53,9 @@ const Places = () => {
   };
 
   //********* FORM SUBMIT || ADD PLACE *********/
-  const handleSubmit = (e) => {
+  const handleAddNewPlace = (e) => {
     e.preventDefault();
+    
   };
 
   //********* MAKE FORM SORT *********/
@@ -104,7 +105,7 @@ const Places = () => {
       {/********** FORM TO ADD NEW PLACE AND DETAILS *********/}
       {action === "new" && (
         <div className="p-8">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleAddNewPlace}>
             {preInput(
               "Title",
               "Title for your place, should be short and catchy as in advertisement"
