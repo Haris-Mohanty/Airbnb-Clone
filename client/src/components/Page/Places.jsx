@@ -41,8 +41,12 @@ const Places = () => {
       for (const file of files) {
         formData.append("photos", file);
       }
-      await imageUploadFromDevice(formData);
-      alert("Image Uploaded Successfully! You can add more!");
+      const data = await imageUploadFromDevice(formData);
+
+      const fileName = data.uploadedFiles;
+      setAddedPhotos((prev) => {
+        return [...prev, fileName];
+      });
     } catch (err) {
       alert(err.response.data.error);
     }
