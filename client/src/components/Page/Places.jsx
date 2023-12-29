@@ -6,7 +6,7 @@ import { imageUpload, imageUploadFromDevice } from "../../api/api";
 const Places = () => {
   const { action } = useParams();
 
-  //STATE ADD
+  //********* STATE ADD *********/
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -18,7 +18,7 @@ const Places = () => {
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
 
-  //ADD PHOTO BY LINK
+  //********* ADD PHOTO BY LINK *********/
   const addPhotoByLink = async (e) => {
     e.preventDefault();
     try {
@@ -32,7 +32,7 @@ const Places = () => {
     }
   };
 
-  //UPLOAD PHOTO FROM DEVICE
+  //********* UPLOAD PHOTO FROM DEVICE *********/
   const uploadPhoto = async (e) => {
     try {
       const files = e.target.files;
@@ -52,12 +52,12 @@ const Places = () => {
     }
   };
 
-  // FORM SUBMIT || ADD PLACE
+  //********* FORM SUBMIT || ADD PLACE *********/
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  //MAKE FORM SORT
+  //********* MAKE FORM SORT *********/
   const inputHeader = (text) => {
     return <h2 className="text-2xl font-medium mt-4">{text}</h2>;
   };
@@ -143,15 +143,15 @@ const Places = () => {
             <div className="mt-3 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {addedPhotos.length > 0 &&
                 addedPhotos.map((link, index) => (
-                  <div key={index}>
+                  <div key={index} className="h-40 flex">
                     <img
-                      className="rounded-2xl "
+                      className="rounded-2xl w-full object-cover "
                       src={"http://localhost:8080/uploads/" + link}
                       alt={link}
                     />
                   </div>
                 ))}
-              <label className="flex items-center justify-center gap-2 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
+              <label className="h-40 flex items-center justify-center gap-2 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
                 <input
                   type="file"
                   multiple
