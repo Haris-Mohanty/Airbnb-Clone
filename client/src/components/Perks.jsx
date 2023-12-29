@@ -1,11 +1,19 @@
+import PropTypes from "prop-types";
+
 const Perks = ({ selected, onChange }) => {
-  const handleCheckBox = (name) => {
-    alert(name);
+  const handleCheckBox = (e) => {
+    const { checked, name } = e.target;
+
+    if (checked) {
+      onChange([...selected, name]);
+    } else {
+      onChange([...selected.filter((selectedName) => selectedName !== name)]);
+    }
   };
   return (
     <>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
+        <input type="checkbox" name="wifi" onChange={handleCheckBox} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -23,7 +31,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Wifi</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
+        <input type="checkbox" name="parking" onChange={handleCheckBox} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -41,7 +49,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Free parking spot</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
+        <input type="checkbox" name="tv" onChange={handleCheckBox} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -59,7 +67,7 @@ const Perks = ({ selected, onChange }) => {
         <span>TV</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
+        <input type="checkbox" name="radio" onChange={handleCheckBox} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -77,7 +85,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Radio</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
+        <input type="checkbox" name="pets" onChange={handleCheckBox} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -95,7 +103,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Pets</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
+        <input type="checkbox" name="entrance" onChange={handleCheckBox} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -117,3 +125,8 @@ const Perks = ({ selected, onChange }) => {
 };
 
 export default Perks;
+
+Perks.propTypes = {
+  selected: PropTypes.node.isRequired,
+  onChange: PropTypes.node.isRequired,
+};
