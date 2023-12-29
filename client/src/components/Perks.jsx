@@ -1,8 +1,11 @@
 const Perks = ({ selected, onChange }) => {
+  const handleCheckBox = (name) => {
+    alert(name);
+  };
   return (
     <>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -20,7 +23,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Wifi</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -38,7 +41,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Free parking spot</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -56,7 +59,7 @@ const Perks = ({ selected, onChange }) => {
         <span>TV</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -74,7 +77,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Radio</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -92,7 +95,7 @@ const Perks = ({ selected, onChange }) => {
         <span>Pets</span>
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleCheckBox("wifi")} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
