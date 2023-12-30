@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import imageRoutes from "./routes/imageRoutes.js";
+import placeRoutes from "./routes/placeRoutes.js";
 import multer from "multer";
 
 //********* DOTENV CONFIGURATION *****/
@@ -33,6 +34,7 @@ app.use(cookieParser());
 //********* MIDDLEWARE ROUTES **********/
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/image", imageRoutes);
+app.use("/api/v1/place", placeRoutes);
 
 //****** CUSTOM MIDDLEWARE ERROR HANDLE(Image Error Handle) ******/
 app.use((err, req, res, next) => {

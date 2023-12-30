@@ -5,15 +5,46 @@ const placeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: user,
   },
-  title: String,
-  address: String,
-  photos: [String],
-  description: String,
-  perks: [String],
-  extraInfo: String,
-  checkIn: Number,
-  checkOut: Number,
-  maxGuests: Number,
+  title: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  photos: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  description: {
+    type: String,
+    required: true,
+  },
+  perks: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  extraInfo: {
+    type: String,
+    required: true,
+  },
+  checkIn: {
+    type: Number,
+    required: true,
+  },
+  checkOut: {
+    type: Number,
+    required: true,
+  },
+  maxGuests: {
+    type: Number,
+    required: true,
+  },
 });
 
 export default mongoose.model("place", placeSchema);
