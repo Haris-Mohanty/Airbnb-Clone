@@ -1,7 +1,7 @@
 // import PlaceModel from "../model/PlaceModel.js";
-
 import jwt from "jsonwebtoken";
 
+//************* ADD NEW PLACE *****************/
 export const addNewPlace = async (req, res, next) => {
   try {
     const {
@@ -51,6 +51,9 @@ export const addNewPlace = async (req, res, next) => {
         message: "Invalid Token!",
       });
     }
+
+    //Add new place
+
 
     console.log(userId);
   } catch (err) {

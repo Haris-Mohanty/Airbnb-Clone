@@ -4,7 +4,7 @@ const placeSchema = new mongoose.Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: user,
+      ref: User,
     },
     title: {
       type: String,
@@ -50,4 +50,4 @@ const placeSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("place", placeSchema);
+export default mongoose.model("Place", placeSchema);
