@@ -127,6 +127,6 @@ const Perks = ({ selected, onChange }) => {
 export default Perks;
 
 Perks.propTypes = {
-  selected: PropTypes.node.isRequired,
-  onChange: PropTypes.node.isRequired,
+  selected: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

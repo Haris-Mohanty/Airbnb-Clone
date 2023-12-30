@@ -53,9 +53,8 @@ const Places = () => {
   };
 
   //********* FORM SUBMIT || ADD PLACE *********/
-  const handleAddNewPlace = (e) => {
+  const handleAddNewPlace = async (e) => {
     e.preventDefault();
-    
   };
 
   //********* MAKE FORM SORT *********/
