@@ -43,7 +43,14 @@ export const addNewPlace = async (req, res, next) => {
 
     //Verify Token and Get User ID
     let userId;
-    
+    try {
+      const decode = await jwt.verify(token, process.env.JWT_SECRET);
+      userId = decode.userId;
+    } catch (err) {
+      return res.status(401).json({
+        message: "Invalid Token!",
+      });
+    }
 
     console.log(userId);
   } catch (err) {
