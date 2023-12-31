@@ -1,5 +1,5 @@
-// import PlaceModel from "../model/PlaceModel.js";
 import jwt from "jsonwebtoken";
+import PlaceModel from "../model/PlaceModel.js";
 
 //************* ADD NEW PLACE *****************/
 export const addNewPlace = async (req, res, next) => {
@@ -53,9 +53,25 @@ export const addNewPlace = async (req, res, next) => {
     }
 
     //Add new place
+    let newPlace = new PlaceModel({
+      owner: userId,
+      title,
+      address,
+      photos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    });
 
+    await newPlace.save();
 
-    console.log(userId);
+    return res.status(201).json({
+      message: "Place Created Successfully!",
+      newPlace,
+    });
   } catch (err) {
     return res.status(500).json({
       message: "Internal Server Error!",
