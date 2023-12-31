@@ -92,3 +92,12 @@ export const imageUploadFromDevice = async (formData) => {
     throw err;
   }
 };
+
+//***************** ADD NEW PLACE *************/
+export const addNewPlace = async () => {
+  try {
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
