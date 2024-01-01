@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Perks from "../Perks";
-import { imageUpload, imageUploadFromDevice } from "../../api/api";
+import { addNewPlace, imageUpload, imageUploadFromDevice } from "../../api/api";
 
 const Places = () => {
   const { action } = useParams();
@@ -55,9 +55,24 @@ const Places = () => {
   //********* FORM SUBMIT || ADD PLACE *********/
   const handleAddNewPlace = async (e) => {
     e.preventDefault();
-    const data = { title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests };
+    const data = {
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    };
 
-    
+    try {
+      const response = await addNewPlace(data);
+      console.log(response);
+    } catch (err) {
+      alert(err.response.data.error);
+    }
   };
 
   //********* MAKE FORM SORT *********/
