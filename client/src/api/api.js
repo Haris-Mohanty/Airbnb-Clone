@@ -94,8 +94,16 @@ export const imageUploadFromDevice = async (formData) => {
 };
 
 //***************** ADD NEW PLACE *************/
-export const addNewPlace = async () => {
+export const addNewPlace = async (data) => {
   try {
+    const response = await axios.post("/place/add-new-place", data);
+
+    if (response.status === 201) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
   } catch (err) {
     console.log(err.message);
     throw err;
