@@ -43,9 +43,9 @@ const Places = () => {
       }
       const data = await imageUploadFromDevice(formData);
 
-      const fileName = data.uploadedFiles;
+      const fileNames = data.uploadedFiles;
       setAddedPhotos((prev) => {
-        return [...prev, fileName];
+        return [...prev, ...fileNames];
       });
     } catch (err) {
       alert(err.response.data.error);
@@ -67,11 +67,14 @@ const Places = () => {
       maxGuests,
     };
 
+    console.log(data);
+
     try {
       const response = await addNewPlace(data);
       console.log(response);
     } catch (err) {
-      alert(err.response.data.message);
+      // alert(err)
+      console.log(err);
     }
   };
 
