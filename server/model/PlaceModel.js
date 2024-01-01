@@ -17,7 +17,6 @@ const placeSchema = new mongoose.Schema(
     photos: [
       {
         type: String,
-        required: true,
       },
     ],
     description: {
@@ -27,7 +26,6 @@ const placeSchema = new mongoose.Schema(
     perks: [
       {
         type: String,
-        required: true,
       },
     ],
     extraInfo: {
