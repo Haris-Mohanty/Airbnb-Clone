@@ -7,7 +7,7 @@ export const addNewPlace = async (req, res, next) => {
     const {
       title,
       address,
-      photos,
+      addedPhotos,
       description,
       perks,
       extraInfo,
@@ -20,9 +20,7 @@ export const addNewPlace = async (req, res, next) => {
     if (
       !title ||
       !address ||
-      !photos ||
       !description ||
-      !perks ||
       !extraInfo ||
       !checkIn ||
       !checkOut ||
@@ -57,7 +55,7 @@ export const addNewPlace = async (req, res, next) => {
       owner: userId,
       title,
       address,
-      photos,
+      photos: addedPhotos,
       description,
       perks,
       extraInfo,
