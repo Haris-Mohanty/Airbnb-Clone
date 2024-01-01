@@ -71,7 +71,7 @@ const Places = () => {
       const response = await addNewPlace(data);
       console.log(response);
     } catch (err) {
-      alert(err.response.data.error);
+      alert(err.response.data.message);
     }
   };
 
