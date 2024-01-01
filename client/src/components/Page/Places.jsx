@@ -67,14 +67,11 @@ const Places = () => {
       maxGuests,
     };
 
-    console.log(data);
-
     try {
-      const response = await addNewPlace(data);
-      console.log(response);
+      await addNewPlace(data);
+      alert("Place Created Successfully!");
     } catch (err) {
-      // alert(err)
-      console.log(err);
+      alert(err.response.data.message);
     }
   };
 
