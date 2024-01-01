@@ -55,6 +55,9 @@ const Places = () => {
   //********* FORM SUBMIT || ADD PLACE *********/
   const handleAddNewPlace = async (e) => {
     e.preventDefault();
+    const data = { title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests };
+
+    
   };
 
   //********* MAKE FORM SORT *********/
