@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Perks from "../Perks";
 import { addNewPlace, imageUpload, imageUploadFromDevice } from "../../api/api";
 
 const Places = () => {
+  const navigate = useNavigate();
   const { action } = useParams();
 
   //********* STATE ADD *********/
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
-  const [photoLink, setPhotLink] = useState("");
+  const [photoLink, setPhotoLink] = useState("");
   const [description, setDescription] = useState("");
   const [perks, setPerks] = useState([]);
   const [extraInfo, setExtraInfo] = useState("");
@@ -69,7 +70,7 @@ const Places = () => {
 
     try {
       await addNewPlace(data);
-      alert("Place Created Successfully!");
+      navigate("/account/places");
     } catch (err) {
       alert(err.response.data.message);
     }
@@ -148,7 +149,7 @@ const Places = () => {
                 type="text"
                 placeholder="Add photos using a link ....jpg"
                 value={photoLink}
-                onChange={(e) => setPhotLink(e.target.value)}
+                onChange={(e) => setPhotoLink(e.target.value)}
               />
               <button
                 onClick={addPhotoByLink}
@@ -219,8 +220,8 @@ const Places = () => {
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Check In time </h3>
                 <input
-                  type="text"
-                  placeholder="ex 14:00"
+                  type="number"
+                  placeholder="ex 14"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
                 />
@@ -228,8 +229,8 @@ const Places = () => {
               <div>
                 <h3 className="mt-2 font-medium -mb-1">Check Out time </h3>
                 <input
-                  type="text"
-                  placeholder="ex 11:00"
+                  type="number"
+                  placeholder="ex 11"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
                 />
