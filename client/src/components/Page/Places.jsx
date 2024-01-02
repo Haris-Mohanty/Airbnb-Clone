@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Perks from "../Perks";
 import { addNewPlace, imageUpload, imageUploadFromDevice } from "../../api/api";
+import AddedPlaces from "../AddedPlaces";
 
 const Places = () => {
   const navigate = useNavigate();
@@ -97,10 +98,8 @@ const Places = () => {
       {/**** WHEN CLICK ON ADD NEW PLACE BUTTON, THE BUTTON IS HIDE ****/}
       {action !== "new" && (
         <div className="text-center">
-          List of all added Places
-          <br />
           <Link
-            className="inline-flex gap-1 mt-3 bg-primary text-white py-2 px-6 rounded-full"
+            className="inline-flex gap-1 mb-3 bg-primary text-white py-2 px-6 rounded-full"
             to={"/account/places/new"}
           >
             <svg
@@ -119,6 +118,9 @@ const Places = () => {
             </svg>
             Add new Place
           </Link>
+          <br />
+          List of all added Places
+          <AddedPlaces />
         </div>
       )}
 
