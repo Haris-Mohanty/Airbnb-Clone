@@ -97,8 +97,10 @@ const Places = () => {
       {/**** WHEN CLICK ON ADD NEW PLACE BUTTON, THE BUTTON IS HIDE ****/}
       {action !== "new" && (
         <div className="text-center">
+          List of all added Places
+          <br />
           <Link
-            className="inline-flex gap-1 bg-primary text-white py-2 px-6 rounded-full"
+            className="inline-flex gap-1 mt-3 bg-primary text-white py-2 px-6 rounded-full"
             to={"/account/places/new"}
           >
             <svg
