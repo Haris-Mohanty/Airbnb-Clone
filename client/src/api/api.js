@@ -109,3 +109,19 @@ export const addNewPlace = async (data) => {
     throw err;
   }
 };
+
+export const allAddedPlaces = async () => {
+  try {
+    const response = await axios.get("/place/added-places");
+
+    if (response.status === 200) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
