@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { addNewPlace } from "../api/api";
 import Perks from "./Perks";
 import PhotosUploader from "./PhotosUploader";
@@ -7,6 +7,7 @@ import AccountNav from "./AccountNav";
 
 const PlacesForm = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   //********* STATE ADD *********/
   const [title, setTitle] = useState("");
@@ -18,6 +19,13 @@ const PlacesForm = () => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
+
+  //Edit
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+  }, [id]);
 
   //********* MAKE FORM SORT *********/
   const inputHeader = (text) => {
