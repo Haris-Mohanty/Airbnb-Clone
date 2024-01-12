@@ -110,6 +110,7 @@ export const addNewPlace = async (data) => {
   }
 };
 
+//********* ALL ADDED PLACE SHOW *************/
 export const allAddedPlaces = async () => {
   try {
     const response = await axios.get("/place/added-places");

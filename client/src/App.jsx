@@ -7,6 +7,8 @@ import Layout from "./components/Layout";
 import RegisterPage from "./components/Page/RegisterPage";
 import { UserContextProvider } from "./components/UserContext";
 import Account from "./components/Page/Account";
+import Places from "./components/Page/Places";
+import PlacesForm from "./components/PlacesForm";
 
 function App() {
   return (
@@ -17,10 +19,11 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/account/:subpage?" element={<Account />} />
-            <Route path="/account/:subpage/:action" element={<Account />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/account/places" element={<Places />} />
+            <Route path="/account/places/new" element={<PlacesForm />} />
+            <Route path="/account/places/:id" element={<PlacesForm />} />
           </Route>
-
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </UserContextProvider>
