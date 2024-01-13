@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addNewPlace } from "../api/api";
+import { addNewPlace, getPlacesById } from "../api/api";
 import Perks from "./Perks";
 import PhotosUploader from "./PhotosUploader";
 import AccountNav from "./AccountNav";
@@ -21,10 +21,28 @@ const PlacesForm = () => {
   const [maxGuests, setMaxGuests] = useState(1);
 
   //Edit
+  const fetchPlaces = async (id) => {
+    try {
+      const { place } = await getPlacesById(id);
+      console.log(place);
+      setTitle(place.title);
+      setAddress(place.address);
+      setAddedPhotos(place.photos);
+      setDescription(place.description);
+      setPerks(place.perks);
+      setExtraInfo(place.extraInfo);
+      setCheckIn(place.checkIn);
+      setCheckOut(place.checkOut);
+      setMaxGuests(place.maxGuests);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     if (!id) {
       return;
     }
+    fetchPlaces(id);
   }, [id]);
 
   //********* MAKE FORM SORT *********/

@@ -130,7 +130,7 @@ export const allAddedPlaces = async () => {
 //**************** GET PLACES BY ID ***********/
 export const getPlacesById = async (id) => {
   try {
-    const response = await axios.get(`/places/${id}`);
+    const response = await axios.get(`/place/places/${id}`);
 
     if (response.status === 200) {
       const resData = await response.data;
