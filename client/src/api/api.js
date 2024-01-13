@@ -126,3 +126,20 @@ export const allAddedPlaces = async () => {
     throw err;
   }
 };
+
+//**************** GET PLACES BY ID ***********/
+export const getPlacesById = async (id) => {
+  try {
+    const response = await axios.get(`/places/${id}`);
+
+    if (response.status === 200) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
