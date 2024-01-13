@@ -118,3 +118,15 @@ export const addedPlaces = async (req, res, next) => {
     });
   }
 };
+
+//****************** GET PLACES BY ID ********************** /
+export const getPlacesById = async (req, res, next) => {
+  try {
+    
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error!",
+      error: err.message,
+    });
+  }
+};
