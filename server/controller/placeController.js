@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import PlaceModel from "../model/PlaceModel.js";
+import mongoose from "mongoose";
 
 //************* ADD NEW PLACE *****************/
 export const addNewPlace = async (req, res, next) => {
@@ -122,7 +123,25 @@ export const addedPlaces = async (req, res, next) => {
 //****************** GET PLACES BY ID ********************** /
 export const getPlacesById = async (req, res, next) => {
   try {
-    
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: "Invalid ID!",
+      });
+    }
+
+    //Get place
+    const place = await PlaceModel.findById(id);
+    if (!place) {
+      return res.status(404).json({
+        message: "Place not found",
+      });
+    }
+
+    //Res message
+    return res.status(200).json({
+      place,
+    });
   } catch (err) {
     return res.status(500).json({
       message: "Internal Server Error!",
