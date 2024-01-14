@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addNewPlace, getPlacesById } from "../api/api";
+import { addNewPlace, getPlacesById, updatePlace } from "../api/api";
 import Perks from "./Perks";
 import PhotosUploader from "./PhotosUploader";
 import AccountNav from "./AccountNav";
@@ -79,7 +79,13 @@ const PlacesForm = () => {
     };
 
     if (id) {
-      //update
+      //update place
+      try {
+        await updatePlace(id, data);
+        navigate("/account/places");
+      } catch (err) {
+        alert(err.response.data.message);
+      }
     } else {
       //new place
       try {

@@ -145,10 +145,10 @@ export const getPlacesById = async (id) => {
 };
 
 //**************** UPDATE PLACES ***********/
-export const updatePlace = async (data) => {
+export const updatePlace = async (id, data) => {
   try {
-    const response = await axios.put("/place/updatePlace", data);
-    if (response.status === 201) {
+    const response = await axios.put("/place/updatePlace", { id, ...data });
+    if (response.status === 200) {
       const resData = await response.data;
       return resData;
     } else {

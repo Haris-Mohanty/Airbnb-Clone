@@ -179,7 +179,7 @@ export const updatePlace = async (req, res, next) => {
         maxGuests,
       });
       await updatedPlace.save();
-      return res.status(201).json({
+      return res.status(200).json({
         message: "Place Updated Successfully!",
         updatedPlace,
       });
