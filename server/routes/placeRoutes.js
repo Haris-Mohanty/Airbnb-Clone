@@ -19,7 +19,7 @@ router.get("/added-places", addedPlaces);
 router.get("/places/:id", getPlacesById);
 
 //Update Place
-router.put("/places/:id", updatePlace);
+router.put("/updatePlace", updatePlace);
 
 //Export
 export default router;

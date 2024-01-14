@@ -5,28 +5,10 @@ import mongoose from "mongoose";
 //************* ADD NEW PLACE *****************/
 export const addNewPlace = async (req, res, next) => {
   try {
-    const {
-      title,
-      address,
-      addedPhotos,
-      description,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-    } = req.body;
+    const { title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests } = req.body;
 
     //Validation
-    if (
-      !title ||
-      !address ||
-      !description ||
-      !extraInfo ||
-      !checkIn ||
-      !checkOut ||
-      !maxGuests
-    ) {
+    if (!title || !address || !description || !extraInfo || !checkIn || !checkOut || !maxGuests) {
       return res.status(422).json({
         message: "Please Provide All Fields!",
       });
@@ -153,7 +135,7 @@ export const getPlacesById = async (req, res, next) => {
 //****************** UPDATE PLACES ********************** /
 export const updatePlace = async (req, res, next) => {
   try {
-    const { title, address, addedPhotos,description,perks,extraInfo,checkIn,checkOut,maxGuests } = req.body;
+    const { id, title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut,maxGuests } = req.body;
 
     //Validation
     if (!title || !address || !description || !extraInfo || !checkIn || !checkOut || !maxGuests) {
@@ -167,6 +149,44 @@ export const updatePlace = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         message: "Unauthorized: Token not provided.",
+      });
+    }
+
+    //Verify Token and Get User ID
+    let userId;
+    try {
+      const decode = await jwt.verify(token, process.env.JWT_SECRET);
+      userId = decode.userId;
+    } catch (err) {
+      return res.status(401).json({
+        message: "Invalid Token!",
+      });
+    }
+    const placeDocument = await PlaceModel.findById(id);
+
+    //User id match
+    if (userId === placeDocument.owner.toString()) {
+      //Place Update
+      let updatedPlace = placeDocument.set({
+        title,
+        address,
+        photos: addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+      });
+      await updatedPlace.save();
+      return res.status(201).json({
+        message: "Place Updated Successfully!",
+        updatedPlace,
+      });
+    } else {
+      //user not match
+      return res.status(401).json({
+        message: "Invalid User!",
       });
     }
   } catch (err) {
