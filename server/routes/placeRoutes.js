@@ -3,6 +3,7 @@ import {
   addNewPlace,
   addedPlaces,
   getPlacesById,
+  updatePlace,
 } from "../controller/placeController.js";
 
 //Router Obj
@@ -16,6 +17,9 @@ router.get("/added-places", addedPlaces);
 
 //Get places by ID
 router.get("/places/:id", getPlacesById);
+
+//Update Place
+router.put("/places/:id", updatePlace);
 
 //Export
 export default router;

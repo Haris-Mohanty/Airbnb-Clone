@@ -82,13 +82,12 @@ const PlacesForm = () => {
       //update
     } else {
       //new place
-    }
-
-    try {
-      await addNewPlace(data);
-      navigate("/account/places");
-    } catch (err) {
-      alert(err.response.data.message);
+      try {
+        await addNewPlace(data);
+        navigate("/account/places");
+      } catch (err) {
+        alert(err.response.data.message);
+      }
     }
   };
 
