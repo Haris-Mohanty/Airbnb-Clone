@@ -148,6 +148,12 @@ export const getPlacesById = async (id) => {
 export const updatePlace = async (data) => {
   try {
     const response = await axios.put("/place/updatePlace", data);
+    if (response.status === 201) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
   } catch (err) {
     console.log(err);
     throw err;
