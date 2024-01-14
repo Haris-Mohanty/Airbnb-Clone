@@ -24,7 +24,8 @@ const PlacesForm = () => {
   const fetchPlaces = async (id) => {
     try {
       const { place } = await getPlacesById(id);
-      console.log(place);
+
+      //Set input field to these data
       setTitle(place.title);
       setAddress(place.address);
       setAddedPhotos(place.photos);
@@ -64,6 +65,7 @@ const PlacesForm = () => {
   //********* FORM SUBMIT || ADD PLACE *********/
   const handleAddNewPlace = async (e) => {
     e.preventDefault();
+
     const data = {
       title,
       address,
@@ -75,6 +77,12 @@ const PlacesForm = () => {
       checkOut,
       maxGuests,
     };
+
+    if (id) {
+      //update
+    } else {
+      //new place
+    }
 
     try {
       await addNewPlace(data);
