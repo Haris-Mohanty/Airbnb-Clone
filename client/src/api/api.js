@@ -143,3 +143,13 @@ export const getPlacesById = async (id) => {
     throw err;
   }
 };
+
+//**************** UPDATE PLACES ***********/
+export const updatePlace = async (data) => {
+  try {
+    const response = await axios.put("/place/updatePlace", data);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
