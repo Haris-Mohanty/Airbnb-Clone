@@ -38,6 +38,12 @@ const PhotosUploader = ({ addedPhotos, onChange }) => {
       alert(err.response.data.error);
     }
   };
+
+  //********* UPLOAD PHOTO FROM DEVICE *********/
+  const removePhoto = (filename) => {
+    onChange([...addedPhotos.filter((photo) => photo !== filename)]);
+  };
+
   return (
     <>
       <div className="flex gap-2">
