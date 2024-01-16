@@ -159,3 +159,20 @@ export const updatePlace = async (id, data) => {
     throw err;
   }
 };
+
+//********* GET ALL ADDED PLACES (BY ALL USER) ********/
+export const getAllAddedPlaces = async () => {
+  try {
+    const response = await axios.get("/place/all-added-places");
+
+    if (response.status === 200) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
