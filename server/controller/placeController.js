@@ -235,4 +235,22 @@ export const updatePlace = async (req, res, next) => {
 };
 
 //********** GET ALL ADDED PLACES (ADDED BY ALL USER) ******************* /
-export const getAllAddedPlaces = async (req, res, next) => {};
+export const getAllAddedPlaces = async (req, res, next) => {
+  try {
+    const allPlaces = await PlaceModel.find();
+    if (!allPlaces) {
+      return res.status(404).json({
+        message: "No Places Found!",
+      });
+    }
+
+    return res.status(200).json({
+      allPlaces,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error!",
+      error: err.message,
+    });
+  }
+};
