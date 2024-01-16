@@ -5,10 +5,28 @@ import mongoose from "mongoose";
 //************* ADD NEW PLACE *****************/
 export const addNewPlace = async (req, res, next) => {
   try {
-    const { title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests } = req.body;
+    const {
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    } = req.body;
 
     //Validation
-    if (!title || !address || !description || !extraInfo || !checkIn || !checkOut || !maxGuests) {
+    if (
+      !title ||
+      !address ||
+      !description ||
+      !extraInfo ||
+      !checkIn ||
+      !checkOut ||
+      !maxGuests
+    ) {
       return res.status(422).json({
         message: "Please Provide All Fields!",
       });
@@ -135,10 +153,29 @@ export const getPlacesById = async (req, res, next) => {
 //****************** UPDATE PLACES ********************** /
 export const updatePlace = async (req, res, next) => {
   try {
-    const { id, title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut,maxGuests } = req.body;
+    const {
+      id,
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    } = req.body;
 
     //Validation
-    if (!title || !address || !description || !extraInfo || !checkIn || !checkOut || !maxGuests) {
+    if (
+      !title ||
+      !address ||
+      !description ||
+      !extraInfo ||
+      !checkIn ||
+      !checkOut ||
+      !maxGuests
+    ) {
       return res.status(422).json({
         message: "Please Provide All Fields!",
       });
@@ -196,3 +233,6 @@ export const updatePlace = async (req, res, next) => {
     });
   }
 };
+
+//********** GET ALL ADDED PLACES (ADDED BY ALL USER) ******************* /
+export const getAllAddedPlaces = async (req, res, next) => {};
