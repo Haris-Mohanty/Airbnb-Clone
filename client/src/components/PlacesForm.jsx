@@ -36,6 +36,7 @@ const PlacesForm = () => {
       setCheckIn(place.checkIn);
       setCheckOut(place.checkOut);
       setMaxGuests(place.maxGuests);
+      setMaxGuests(place.price);
     } catch (err) {
       console.log(err);
     }
@@ -77,6 +78,7 @@ const PlacesForm = () => {
       checkIn,
       checkOut,
       maxGuests,
+      price
     };
 
     if (id) {
@@ -169,7 +171,6 @@ const PlacesForm = () => {
               <h3 className="mt-2 font-medium -mb-1">Max number of guests</h3>
               <input
                 type="number"
-                placeholder="ex 2 or 3..."
                 value={maxGuests}
                 onChange={(e) => setMaxGuests(e.target.value)}
               />
@@ -178,9 +179,8 @@ const PlacesForm = () => {
               <h3 className="mt-2 font-medium -mb-1">Price per Night</h3>
               <input
                 type="number"
-                placeholder="ex 2 or 3..."
-                value={maxGuests}
-                onChange={(e) => setMaxGuests(e.target.value)}
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
           </div>
