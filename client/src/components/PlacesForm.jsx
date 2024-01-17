@@ -19,6 +19,7 @@ const PlacesForm = () => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [maxGuests, setMaxGuests] = useState(1);
+  const [price, setPrice] = useState(100);
 
   //Edit
   const fetchPlaces = async (id) => {
@@ -145,7 +146,7 @@ const PlacesForm = () => {
             "Check in&out times",
             "Add check in and out times, remember to have some time window for cleaning the room between guests"
           )}
-          <div className="grid gap-2 sm:grid-cols-3">
+          <div className="grid gap-2 sm:grid-cols-3 md:grid-cols-4">
             <div>
               <h3 className="mt-2 font-medium -mb-1">Check In time </h3>
               <input
@@ -166,6 +167,15 @@ const PlacesForm = () => {
             </div>
             <div>
               <h3 className="mt-2 font-medium -mb-1">Max number of guests</h3>
+              <input
+                type="number"
+                placeholder="ex 2 or 3..."
+                value={maxGuests}
+                onChange={(e) => setMaxGuests(e.target.value)}
+              />
+            </div>
+            <div>
+              <h3 className="mt-2 font-medium -mb-1">Price per Night</h3>
               <input
                 type="number"
                 placeholder="ex 2 or 3..."
