@@ -15,6 +15,7 @@ export const addNewPlace = async (req, res, next) => {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     } = req.body;
 
     //Validation
@@ -25,7 +26,8 @@ export const addNewPlace = async (req, res, next) => {
       !extraInfo ||
       !checkIn ||
       !checkOut ||
-      !maxGuests
+      !maxGuests ||
+      !price
     ) {
       return res.status(422).json({
         message: "Please Provide All Fields!",
@@ -63,6 +65,7 @@ export const addNewPlace = async (req, res, next) => {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     });
 
     await newPlace.save();
@@ -164,6 +167,7 @@ export const updatePlace = async (req, res, next) => {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     } = req.body;
 
     //Validation
@@ -174,7 +178,8 @@ export const updatePlace = async (req, res, next) => {
       !extraInfo ||
       !checkIn ||
       !checkOut ||
-      !maxGuests
+      !maxGuests ||
+      !price
     ) {
       return res.status(422).json({
         message: "Please Provide All Fields!",
