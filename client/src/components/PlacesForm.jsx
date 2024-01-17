@@ -36,7 +36,7 @@ const PlacesForm = () => {
       setCheckIn(place.checkIn);
       setCheckOut(place.checkOut);
       setMaxGuests(place.maxGuests);
-      setMaxGuests(place.price);
+      setPrice(place.price);
     } catch (err) {
       console.log(err);
     }
