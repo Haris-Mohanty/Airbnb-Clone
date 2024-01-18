@@ -32,8 +32,9 @@ const Home = () => {
                   />
                 )}
               </div>
-              <h2 className="text-sm truncate leading-4">{place.title}</h2>
-              <div className="font-bold leading-4">{place.address}</div>
+              <h2 className="font-bold">{place.address}</h2>
+              <h3 className="text-sm text-gray-500">{place.title}</h3>
+              <div className="mt-2">${place.price} per night</div>
             </div>
           ))}
       </div>
