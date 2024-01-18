@@ -9,6 +9,7 @@ import { UserContextProvider } from "./components/UserContext";
 import Account from "./components/Page/Account";
 import Places from "./components/Page/Places";
 import PlacesForm from "./components/PlacesForm";
+import PlacePage from "./components/Page/PlacePage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/account/places" element={<Places />} />
             <Route path="/account/places/new" element={<PlacesForm />} />
             <Route path="/account/places/:id" element={<PlacesForm />} />
+            <Route path="/place/:id" element={<PlacePage />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
