@@ -1,17 +1,23 @@
 import { useParams } from "react-router-dom";
 import { getPlacesById } from "../../api/api";
+import { useEffect } from "react";
 
 const PlacePage = () => {
   const { id } = useParams();
 
-  const fetchPlaceById = async () => {
+  //Fetch places from ID
+  const fetchPlaceById = async (id) => {
     try {
-      const data = getPlacesById(id);
+      const data = await getPlacesById(id);
       console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    fetchPlaceById(id);
+  }, []);
 
   return (
     <>
