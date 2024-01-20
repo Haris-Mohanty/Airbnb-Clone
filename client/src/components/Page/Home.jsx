@@ -9,7 +9,7 @@ const Home = () => {
   const fetchAllAddedPlaces = async () => {
     try {
       const data = await getAllAddedPlaces();
-      setPlaces([...data.allPlaces, ...data.allPlaces]);
+      setPlaces([...data.allPlaces]);
     } catch (err) {
       console.log(err);
     }
