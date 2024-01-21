@@ -157,6 +157,24 @@ const PlacePage = () => {
             Show more photos
           </button>
         </div>
+
+        {/********* DESCRIPTION ********/}
+        <div className="my-4">
+          <h2 className="font-semibold text-2xl mb-1">Description</h2>
+          {place.description}
+        </div>
+
+        {/********* CHECKIN AND CHECKOUT ********/}
+        <div className="grid grid-cols-2">
+          <div>
+            <b>Check-In: </b>{place.checkIn} <br />
+            <b>Check-Out: </b>{place.checkOut} <br />
+            <b>Max no of Guests: </b>{place.maxGuests}
+          </div>
+          <div>
+          
+          </div>
+        </div>
       </div>
     </>
   );
