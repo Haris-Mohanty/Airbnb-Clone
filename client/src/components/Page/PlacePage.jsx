@@ -167,12 +167,20 @@ const PlacePage = () => {
         {/********* CHECKIN AND CHECKOUT ********/}
         <div className="grid grid-cols-2">
           <div>
-            <b>Check-In: </b>{place.checkIn} <br />
-            <b>Check-Out: </b>{place.checkOut} <br />
-            <b>Max no of Guests: </b>{place.maxGuests}
+            <b>Check-In Time: </b>
+            {place.checkIn} <br />
+            <b>Check-Out Time: </b>
+            {place.checkOut} <br />
+            <b>Max no of Guests: </b>
+            {place.maxGuests}
           </div>
           <div>
-          
+            <div className="bg-white shadow p-4 rounded-2xl">
+              <h2 className="text-xl font-semibold text-center mb-1">
+                Price: ${place.price} / Per night
+              </h2>
+              <button className="primary">Book this place</button>
+            </div>
           </div>
         </div>
       </div>
