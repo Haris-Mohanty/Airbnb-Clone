@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getPlacesById } from "../../api/api";
 import { useEffect, useState } from "react";
+import BookingWidget from "../BookingWidget";
 
 const PlacePage = () => {
   const { id } = useParams();
@@ -158,15 +159,14 @@ const PlacePage = () => {
           </button>
         </div>
 
-        {/********* DESCRIPTION ********/}
-        <div className="my-4">
-          <h2 className="font-semibold text-2xl mb-1">Description</h2>
-          {place.description}
-        </div>
-
         {/********* CHECKIN AND CHECKOUT ********/}
-        <div className="grid grid-cols-2">
+        <div className="mt-8 gap-8 grid gird-cols-1 md:grid-cols-[2fr_1fr]">
           <div>
+            {/********* DESCRIPTION ********/}
+            <div className="my-4">
+              <h2 className="font-semibold text-2xl mb-1">Description</h2>
+              {place.description}
+            </div>
             <b>Check-In Time: </b>
             {place.checkIn} <br />
             <b>Check-Out Time: </b>
@@ -174,14 +174,12 @@ const PlacePage = () => {
             <b>Max no of Guests: </b>
             {place.maxGuests}
           </div>
+
+          {/******** BOOKING ******/}
           <div>
-            <div className="bg-white shadow p-4 rounded-2xl">
-              <h2 className="text-xl font-semibold text-center mb-1">
-                Price: ${place.price} / Per night
-              </h2>
-              <button className="primary">Book this place</button>
-            </div>
+            <BookingWidget place={place} />
           </div>
+          
         </div>
       </div>
     </>
