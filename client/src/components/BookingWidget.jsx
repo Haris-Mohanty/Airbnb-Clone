@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 const BookingWidget = ({ place }) => {
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
+
   return (
     <>
       <div className="bg-white shadow p-4 rounded-2xl">
@@ -11,11 +16,21 @@ const BookingWidget = ({ place }) => {
           <div className="flex">
             <div className="py-3 px-4">
               <label htmlFor="">Check In: </label>
-              <input type="date" className="cursor-pointer" name="" id="" />
+              <input
+                type="date"
+                className="cursor-pointer"
+                value={checkIn}
+                onChange={(e) => setCheckIn(e.target.value)}
+              />
             </div>
             <div className="py-3 px-4 border-l">
               <label htmlFor="">Check Out: </label>
-              <input type="date" className="cursor-pointer" name="" id="" />
+              <input
+                type="date"
+                className="cursor-pointer"
+                value={checkOut}
+                onChange={(e) => setCheckOut(e.target.value)}
+              />
             </div>
           </div>
           <div className="py-3 px-4 border-t">
@@ -23,9 +38,8 @@ const BookingWidget = ({ place }) => {
             <input
               type="number"
               className="cursor-pointer"
-              value={1}
-              name=""
-              id=""
+              value={numberOfGuests}
+              onChange={(e) => setNumberOfGuests(e.target.value)}
             />
           </div>
         </div>
