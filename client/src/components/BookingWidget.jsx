@@ -9,6 +9,8 @@ const BookingWidget = ({ place }) => {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
 
+  const maxGuests = place.maxGuests;
+
   let numberOfNights = 0;
   if (checkIn && checkOut) {
     numberOfNights = differenceInCalendarDays(
@@ -50,7 +52,13 @@ const BookingWidget = ({ place }) => {
               type="number"
               className="cursor-pointer"
               value={numberOfGuests}
-              onChange={(e) => setNumberOfGuests(e.target.value)}
+              onChange={(e) => {
+                const newValue = Math.min(
+                  Math.max(parseInt(e.target.value) || 1, 1),
+                  maxGuests
+                );
+                setNumberOfGuests(newValue);
+              }}
             />
           </div>
 
@@ -88,5 +96,6 @@ export default BookingWidget;
 BookingWidget.propTypes = {
   place: PropTypes.shape({
     price: PropTypes.number.isRequired,
+    maxGuests: PropTypes.number.isRequired,
   }).isRequired,
 };
