@@ -1,10 +1,21 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { differenceInCalendarDays } from "date-fns";
 
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  let numberOfNights = 0;
+  if (checkIn && checkOut) {
+    numberOfNights = differenceInCalendarDays(
+      new Date(checkOut),
+      new Date(checkIn)
+    );
+  }
 
   return (
     <>
@@ -15,7 +26,7 @@ const BookingWidget = ({ place }) => {
         <div className="border rounded-2xl">
           <div className="flex">
             <div className="py-3 px-4">
-              <label htmlFor="">Check In: </label>
+              <label>Check In: </label>
               <input
                 type="date"
                 className="cursor-pointer"
@@ -24,7 +35,7 @@ const BookingWidget = ({ place }) => {
               />
             </div>
             <div className="py-3 px-4 border-l">
-              <label htmlFor="">Check Out: </label>
+              <label>Check Out: </label>
               <input
                 type="date"
                 className="cursor-pointer"
@@ -34,7 +45,7 @@ const BookingWidget = ({ place }) => {
             </div>
           </div>
           <div className="py-3 px-4 border-t">
-            <label htmlFor="">Number of Guests: </label>
+            <label>Number of Guests: </label>
             <input
               type="number"
               className="cursor-pointer"
@@ -42,8 +53,31 @@ const BookingWidget = ({ place }) => {
               onChange={(e) => setNumberOfGuests(e.target.value)}
             />
           </div>
+
+          {/****** USER DETAILS *****/}
+          {numberOfNights > 0 && (
+            <div className="py-3 px-4 border-t">
+              <label>Full Name: </label>
+              <input
+                type="text"
+                className="cursor-pointer"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label>Mobile No: </label>
+              <input
+                type="tel"
+                className="cursor-pointer"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+              />
+            </div>
+          )}
         </div>
-        <button className="primary mt-2">Book this place</button>
+        <button className="primary mt-2">
+          Book this place
+          {numberOfNights > 0 && <span> ${numberOfNights * place.price}</span>}
+        </button>
       </div>
     </>
   );
@@ -52,5 +86,7 @@ const BookingWidget = ({ place }) => {
 export default BookingWidget;
 
 BookingWidget.propTypes = {
-  place: PropTypes.string.isRequired,
+  place: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+  }).isRequired,
 };

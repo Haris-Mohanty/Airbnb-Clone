@@ -6,6 +6,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
+input[type="tel"],
 textarea {
   @apply w-full border my-1 py-2 px-3 rounded-2xl cursor-pointer;
 }
