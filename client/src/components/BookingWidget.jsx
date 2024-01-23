@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
+import { bookingPlace } from "../api/api";
 
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState("");
@@ -10,6 +11,25 @@ const BookingWidget = ({ place }) => {
   const [mobile, setMobile] = useState("");
 
   const maxGuests = place.maxGuests;
+
+  // Booking Place
+  const bookThisPlace = async () => {
+    const data = {
+      place: place._id,
+      user: place.owner,
+      checkIn,
+      checkOut,
+      numberOfGuests,
+      name,
+      mobile,
+      price: numberOfNights * place.price,
+    };
+    try {
+      await bookingPlace(data);
+    } catch (err) {
+      alert(err.response.data.message);
+    }
+  };
 
   let numberOfNights = 0;
   if (checkIn && checkOut) {
@@ -82,7 +102,7 @@ const BookingWidget = ({ place }) => {
             </div>
           )}
         </div>
-        <button className="primary mt-2">
+        <button onClick={bookThisPlace} className="primary mt-2">
           Book this place
           {numberOfNights > 0 && <span> ${numberOfNights * place.price}</span>}
         </button>
@@ -97,5 +117,7 @@ BookingWidget.propTypes = {
   place: PropTypes.shape({
     price: PropTypes.number.isRequired,
     maxGuests: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
   }).isRequired,
 };

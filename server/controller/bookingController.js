@@ -17,6 +17,7 @@ export const bookingPlace = async (req, res, next) => {
     // Validation
     if (
       !place ||
+      !user ||
       !checkIn ||
       !checkOut ||
       !numberOfGuests ||
@@ -30,16 +31,7 @@ export const bookingPlace = async (req, res, next) => {
     }
 
     // Booking
-    const booking = new BookingModel({
-      place,
-      user,
-      checkIn,
-      checkOut,
-      maxGuests: numberOfGuests,
-      name,
-      mobile,
-      price,
-    });
+    const booking = new BookingModel(req.body);
     await booking.save();
 
     return res.status(201).json({

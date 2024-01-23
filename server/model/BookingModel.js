@@ -19,7 +19,7 @@ const BookingSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    maxGuests: {
+    numberOfGuests: {
       type: Number,
       required: true,
     },
