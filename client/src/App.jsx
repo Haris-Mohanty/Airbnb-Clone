@@ -10,6 +10,8 @@ import Account from "./components/Page/Account";
 import Places from "./components/Page/Places";
 import PlacesForm from "./components/PlacesForm";
 import PlacePage from "./components/Page/PlacePage";
+import BookingsPage from "./components/Page/BookingsPage";
+import BookingPlacePage from "./components/Page/BookingPlacePage";
 
 function App() {
   return (
@@ -25,6 +27,11 @@ function App() {
             <Route path="/account/places/new" element={<PlacesForm />} />
             <Route path="/account/places/:id" element={<PlacesForm />} />
             <Route path="/place/:id" element={<PlacePage />} />
+            <Route path="/account/bookings" element={<BookingsPage />} />
+            <Route
+              path="/account/bookings/:id"
+              element={<BookingPlacePage />}
+            />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

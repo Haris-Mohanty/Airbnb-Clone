@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
 import { bookingPlace } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const BookingWidget = ({ place }) => {
+  const navigate = useNavigate();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -25,7 +27,9 @@ const BookingWidget = ({ place }) => {
       price: numberOfNights * place.price,
     };
     try {
-      await bookingPlace(data);
+      const { booking } = await bookingPlace(data);
+      const bookingId = booking._id;
+      navigate(`/account/bookings/${bookingId}`);
     } catch (err) {
       alert(err.response.data.message);
     }

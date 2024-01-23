@@ -1,11 +1,17 @@
 import express from "express";
-import { bookingPlace } from "../controller/bookingController.js";
+import {
+  bookingPlace,
+  getBookingOfUser,
+} from "../controller/bookingController.js";
 
 //Router Obj
 const router = express.Router();
 
 //Booking Place
 router.post("/bookings", bookingPlace);
+
+// Get all booking of user (By User Id)
+router.post("/getBookings", getBookingOfUser);
 
 //Export
 export default router;
