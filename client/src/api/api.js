@@ -176,3 +176,20 @@ export const getAllAddedPlaces = async () => {
     throw err;
   }
 };
+
+//************ BOOKING PLACE *************/
+export const bookingPlace = async (data) => {
+  try {
+    const response = await axios.post("/book/bookings", data);
+
+    if (response.status === 201) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};

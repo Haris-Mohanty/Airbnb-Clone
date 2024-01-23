@@ -5,7 +5,7 @@ import { bookingPlace } from "../controller/bookingController.js";
 const router = express.Router();
 
 //Booking Place
-router.post("/booking", bookingPlace);
+router.post("/bookings", bookingPlace);
 
 //Export
 export default router;

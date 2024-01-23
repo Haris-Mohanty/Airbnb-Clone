@@ -3,15 +3,23 @@ import BookingModel from "../model/BookingModel.js";
 //************* ADD NEW BOOKING *****************/
 export const bookingPlace = async (req, res, next) => {
   try {
-    const { place, user, checkIn, checkOut, maxGuests, name, mobile, price } =
-      req.body;
+    const {
+      place,
+      user,
+      checkIn,
+      checkOut,
+      numberOfGuests,
+      name,
+      mobile,
+      price,
+    } = req.body;
 
     // Validation
     if (
       !place ||
       !checkIn ||
       !checkOut ||
-      !maxGuests ||
+      !numberOfGuests ||
       !name ||
       !mobile ||
       !price
@@ -27,7 +35,7 @@ export const bookingPlace = async (req, res, next) => {
       user,
       checkIn,
       checkOut,
-      maxGuests,
+      maxGuests: numberOfGuests,
       name,
       mobile,
       price,

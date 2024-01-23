@@ -19,9 +19,6 @@ const BookingWidget = ({ place }) => {
     );
   }
 
-  console.log(checkIn)
-  console.log(checkOut)
-
   return (
     <>
       <div className="bg-white shadow p-4 rounded-2xl">
