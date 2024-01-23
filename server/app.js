@@ -8,6 +8,7 @@ import connectDB from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import imageRoutes from "./routes/imageRoutes.js";
 import placeRoutes from "./routes/placeRoutes.js";
+import bookingRoutes from "./routes/bookingRoutes.js";
 import multer from "multer";
 
 //********* DOTENV CONFIGURATION *****/
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/image", imageRoutes);
 app.use("/api/v1/place", placeRoutes);
+app.use("/api/v1/book", bookingRoutes);
 
 //****** CUSTOM MIDDLEWARE ERROR HANDLE(Image Error Handle) ******/
 app.use((err, req, res, next) => {
