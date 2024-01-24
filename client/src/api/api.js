@@ -177,12 +177,28 @@ export const getAllAddedPlaces = async () => {
   }
 };
 
-//************ BOOKING PLACE *************/
+//************ BOOKING NEW PLACE *************/
 export const bookingPlace = async (data) => {
   try {
     const response = await axios.post("/book/bookings", data);
 
     if (response.status === 201) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+//************ GET ALL BOOKINGS OF USER *************/
+export const getAllBookingOfUser = async () => {
+  try {
+    const response = await axios.get("/book/getBookings");
+    if (response.status === 200) {
       const resData = await response.data;
       return resData;
     } else {
