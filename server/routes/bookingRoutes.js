@@ -11,7 +11,7 @@ const router = express.Router();
 router.post("/bookings", bookingPlace);
 
 // Get all booking of user (By User Id)
-router.post("/getBookings", getBookingOfUser);
+router.get("/getBookings", getBookingOfUser);
 
 //Export
 export default router;

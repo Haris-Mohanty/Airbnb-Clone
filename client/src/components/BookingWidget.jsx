@@ -18,7 +18,6 @@ const BookingWidget = ({ place }) => {
   const bookThisPlace = async () => {
     const data = {
       place: place._id,
-      user: place.owner,
       checkIn,
       checkOut,
       numberOfGuests,
