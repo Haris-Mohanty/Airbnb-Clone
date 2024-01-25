@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { differenceInCalendarDays } from "date-fns";
 import { bookingPlace } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const BookingWidget = ({ place }) => {
   const navigate = useNavigate();
@@ -11,6 +12,13 @@ const BookingWidget = ({ place }) => {
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
+
+  const { user } = useContext(UserContext);
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+    }
+  }, [user]);
 
   const maxGuests = place.maxGuests;
 

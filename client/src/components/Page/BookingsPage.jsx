@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllBookingOfUser } from "../../api/api";
 import AccountNav from "../AccountNav";
 
 const BookingsPage = () => {
+  const [bookings, setBookings] = useState([]);
   //Fetch all booking of user
   const fetchBookings = async () => {
     try {
       const { allBookingsOfUser } = await getAllBookingOfUser();
-      console.log(allBookingsOfUser);
+      setBookings(allBookingsOfUser);
     } catch (err) {
       alert(err.response.data.message);
     }
@@ -19,7 +20,14 @@ const BookingsPage = () => {
   return (
     <>
       <AccountNav />
-      <div></div>
+      <div>
+        {bookings?.length > 0 &&
+          bookings.map((booking, index) => (
+            <div key={index}>
+              {booking.checkIn} {"->"} {booking.checkOut}
+            </div>
+          ))}
+      </div>
     </>
   );
 };
