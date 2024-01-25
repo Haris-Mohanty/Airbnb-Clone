@@ -83,7 +83,9 @@ export const getBookingOfUser = async (req, res, next) => {
     const userId = await getUserIdFromToken(token);
 
     //Get Bookings
-    const allBookingsOfUser = await BookingModel.find({ user: userId });
+    const allBookingsOfUser = await BookingModel.find({
+      user: userId,
+    }).populate("place");
     if (allBookingsOfUser.length === 0) {
       return res.status(404).json({
         message: "No places found for the user.",

@@ -24,6 +24,15 @@ const BookingsPage = () => {
         {bookings?.length > 0 &&
           bookings.map((booking, index) => (
             <div key={index}>
+              {booking.place.photos.length > 0 && (
+                <img
+                  className="object-cover"
+                  src={
+                    "http://localhost:8080/uploads/" + booking.place.photos[0]
+                  }
+                  alt={booking.place.photos}
+                />
+              )}
               {booking.checkIn} {"->"} {booking.checkOut}
             </div>
           ))}
