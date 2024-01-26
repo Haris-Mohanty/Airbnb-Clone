@@ -30,7 +30,7 @@ const BookingsPage = () => {
                   src={
                     "http://localhost:8080/uploads/" + booking.place.photos[0]
                   }
-                  alt={booking.place.photos}
+                  alt={booking.place.photos[0]}
                 />
               )}
               {booking.checkIn} {"->"} {booking.checkOut}
