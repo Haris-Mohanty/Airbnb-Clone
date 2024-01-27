@@ -103,3 +103,14 @@ export const getBookingOfUser = async (req, res, next) => {
     });
   }
 };
+
+//********* GET BOOKING DETAILS (BY BOOKING ID) ************/
+export const getBookingDetails = async (req, res, nex) => {
+  try {
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error!",
+      error: err.message,
+    });
+  }
+};
