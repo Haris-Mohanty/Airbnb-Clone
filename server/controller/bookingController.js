@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import BookingModel from "../model/BookingModel.js";
+import mongoose from "mongoose";
 
 //************** GET USER ID FROM TOKEN ***********/
 const getUserIdFromToken = async (token) => {
@@ -107,6 +108,25 @@ export const getBookingOfUser = async (req, res, next) => {
 //********* GET BOOKING DETAILS (BY BOOKING ID) ************/
 export const getBookingDetails = async (req, res, nex) => {
   try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: "Invalid ID!",
+      });
+    }
+
+    //Get Booking
+    const booking = await BookingModel.findById(id);
+    if (!booking) {
+      return res.status(404).json({
+        message: "Booking not found",
+      });
+    }
+
+    //Res
+    return res.status(200).json({
+      booking,
+    });
   } catch (err) {
     return res.status(500).json({
       message: "Internal Server Error!",
