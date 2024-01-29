@@ -209,3 +209,20 @@ export const getAllBookingOfUser = async () => {
     throw err;
   }
 };
+
+//******* GET BOOKING DETAILS (BY BOOKING ID) *********/
+export const getBookingDetails = async (id) => {
+  try {
+    const response = await axios.get(`/book/getBooking/${id}`);
+
+    if (response.status === 200) {
+      const resData = await response.data;
+      return resData;
+    } else {
+      throw new Error("Unexpected Error Occurred!");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
