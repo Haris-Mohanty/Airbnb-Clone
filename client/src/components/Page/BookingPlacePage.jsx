@@ -4,14 +4,15 @@ import { getBookingDetails } from "../../api/api";
 
 const BookingPlacePage = () => {
   const { id } = useParams();
-  const [booking, setBookings] = useState(null);
+  const [bookings, setBookings] = useState(null);
 
   //Fetch Booking Details
   const fetchBookingDetails = async (id) => {
     try {
-      getBookingDetails(id);
+      const { booking } = await getBookingDetails(id);
+      setBookings(booking);
     } catch (err) {
-      console.log(err);
+      alert(err.response.data.message);
     }
   };
 
@@ -20,9 +21,13 @@ const BookingPlacePage = () => {
       fetchBookingDetails(id);
     }
   }, [id]);
+
+  if (!bookings) {
+    return "";
+  }
   return (
     <>
-      <div>{id}</div>
+      <div>{bookings.checkIn}</div>
     </>
   );
 };
