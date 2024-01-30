@@ -3,6 +3,7 @@ import { getPlacesById } from "../../api/api";
 import { useEffect, useState } from "react";
 import BookingWidget from "../BookingWidget";
 import PlaceGallery from "../PlaceGallery";
+import AddressLink from "../AddressLink";
 
 const PlacePage = () => {
   const { id } = useParams();
@@ -32,34 +33,8 @@ const PlacePage = () => {
     <>
       <div className="mt-5 bg-gray-100 -mx-8 px-8 pt-8">
         <h1 className="text-3xl">{place.title}</h1>
-        <a
-          className="flex gap-1 my-3 block font-semibold underline my-2"
-          href={"https://maps.google.com/?q=" + place.address}
-          rel="noreferrer"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-            />
-          </svg>
-
-          {place.address}
-        </a>
+        {/******* ADDRESS ***********/}
+        <AddressLink place={place} />
 
         {/******* SHOW IMAGES ***********/}
         <PlaceGallery place={place} />
