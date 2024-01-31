@@ -116,7 +116,7 @@ export const getBookingDetails = async (req, res, nex) => {
     }
 
     //Get Booking
-    const booking = await BookingModel.findById(id);
+    const booking = await BookingModel.findById(id).populate("place")
     if (!booking) {
       return res.status(404).json({
         message: "Booking not found",

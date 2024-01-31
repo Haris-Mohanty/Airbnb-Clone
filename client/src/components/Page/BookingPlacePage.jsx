@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getBookingDetails } from "../../api/api";
+import AddressLink from "../AddressLink";
 
 const BookingPlacePage = () => {
   const { id } = useParams();
@@ -27,7 +28,10 @@ const BookingPlacePage = () => {
   }
   return (
     <>
-      <div>{bookings.checkIn}</div>
+      <div className="my-8">
+        <h1 className="text-3xl">{bookings.place.title}</h1>
+        <AddressLink place={bookings.place} />
+      </div>
     </>
   );
 };
